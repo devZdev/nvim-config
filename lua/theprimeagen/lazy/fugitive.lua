@@ -3,6 +3,11 @@ return {
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
 
+        -- NEW: interactive rebase terminal split
+        vim.keymap.set("n", "<leader>gi", function()
+            vim.cmd("vsplit | terminal git rebase -i HEAD~2")
+        end, { desc = "Git interactive rebase HEAD~2" })
+
         local ThePrimeagen_Fugitive = vim.api.nvim_create_augroup("ThePrimeagen_Fugitive", {})
 
         local autocmd = vim.api.nvim_create_autocmd
